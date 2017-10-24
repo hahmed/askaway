@@ -1,0 +1,25 @@
+<h1 class="text-center mb-5">Ask away. Anything you like!</h1>
+<%= form_tag(questions_url, method: "get") do %>
+  <%= text_field_tag(:q, nil, class: 'form-control form-control-lg', placeholder: 'Search for...' ) %>
+<% end %>
+<div class="mt-5">
+  <p class="text-center">
+    <%= link_to 'New Question', new_question_path, class: 'btn btn-outline-primary' %>
+  </p>
+  <% unless @questions.any? %>
+    <p class="text-center display-1">🤷</p>
+    <p class="text-center">No questions submitted.</p>
+  <% else %>
+    <div class="list-group">
+      <% @questions.each do |question| %>
+        <a href="<%= question_path(question) %>" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= question.title %></h5>
+            <small><%= local_time_ago(question.created_at) %></small>
+          </div>
+          <div class="mb-1"><%= question.content %></div>
+        </a>
+      <% end %>
+    </div>
+  <% end %>
+</div>

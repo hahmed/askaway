@@ -1,0 +1,15 @@
+<h2 class="text-center">Questions</h2>
+<% if @questions.suggestions.any? %>
+  <p>Did you mean: <strong><%= @questions.suggestions.first %></strong></p>
+<% end %>
+<div class="list-group">
+  <% @questions.each do |question| %>
+    <a href="<%= question_path(question) %>" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><%= question.title %></h5>
+        <small><%= local_time_ago(question.created_at) %></small>
+      </div>
+      <div class="mb-1"><%= question.content %></div>
+    </a>
+  <% end %>
+</div>

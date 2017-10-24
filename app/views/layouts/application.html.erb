@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>askaway</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class="">
+    <% unless current_page?(root_url) %>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand" href="/">askaway</a>
+      <%= form_tag(questions_url, method: "get") do %>
+        <%= text_field_tag(:q, nil, class: 'form-control', placeholder: 'Search for...' ) %>
+      <% end %>
+      <a href="<%= new_question_path %>" class="btn btn-outline-primary">New</a>
+    </nav>
+    <% end %>
+    <% flash.each do |name, msg| %>
+      <div role="alert"
+        class="alert text-center <%= name == 'alert' ? 'alert-warning': 'alert-success'%> alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= msg %>
+      </div>
+    <% end %>
+    <div class="col-md-8 mx-auto py-5"><%= yield %></div>
+  </body>
+</html>
