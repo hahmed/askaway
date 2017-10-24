@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  content: MyText
-  claps: 1
+  title: 'What is the best phone?'
+  content: 'Iphone X looks xstatic...'
+  user: one
 
 two:
-  title: MyString
-  content: MyText
-  claps: 1
+  title: 'Where should I live?'
+  content: 'What cities has the best fam life? London/LA/NYC/Dubai/Toronto...'
+  user: one

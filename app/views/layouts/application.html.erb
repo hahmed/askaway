@@ -7,15 +7,47 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="">
-    <% unless current_page?(root_url) %>
-    <nav class="navbar navbar-light bg-light justify-content-between">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="/">askaway</a>
-      <%= form_tag(questions_url, method: "get") do %>
-        <%= text_field_tag(:q, nil, class: 'form-control', placeholder: 'Search for...' ) %>
-      <% end %>
-      <a href="<%= new_question_path %>" class="btn btn-outline-primary">New</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link text-success font-weight-bold" href="<%= new_question_path %>">New question</a>
+          </li>
+        </ul>
+        <% unless current_page?(root_url) %>
+          <%= form_tag(questions_url, method: "get", class: 'form-inline my-2 my-lg-0') do %>
+            <%= text_field_tag(:q, nil, class: 'form-control', placeholder: 'Search for...' ) %>
+          <% end %>
+        <% end %>
+        <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Hello, <%= current_user.email %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">My questions</a>
+              <a class="dropdown-item" href="#">My claps</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Sign out</a>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link text-success font-weight-bold" href="<%= new_question_path %>">Sign up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-success font-weight-bold" href="<%= new_question_path %>">Log in</a>
+          </li>
+        <% end %>
+        </ul>
+      </div>
     </nav>
-    <% end %>
     <% flash.each do |name, msg| %>
       <div role="alert"
         class="alert text-center <%= name == 'alert' ? 'alert-warning': 'alert-success'%> alert-dismissible fade show">

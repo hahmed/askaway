@@ -42,6 +42,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'searchkick'
+gem 'devise'
+gem 'acts-as-taggable-on'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
