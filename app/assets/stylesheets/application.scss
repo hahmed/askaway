@@ -11,7 +11,13 @@
  * It is generally better to create a new file per style scope.
  *
  */
+
+ // Your variable overrides
+$body-bg: #f7f7f9;
+
 @import "jquery-ui";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "bootstrap";
 @import "questions";
 @import "welcome";
