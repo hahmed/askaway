@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   resources :questions do
     resources :answers, only: [:create, :destroy]
     collection do
@@ -7,6 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_for :users, controllers: { sessions: 'users/sessions', passwords: 'users/passwords',
+    registrations: 'users/registrations' }
   get 'welcome' => 'welcome#index'
   root 'welcome#index'
 end
