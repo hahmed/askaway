@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :owns_question, only: [:edit, :update]
 
   # GET /questions
   # GET /questions.json
@@ -78,5 +79,9 @@ class QuestionsController < ApplicationController
 
     def question_params
       params.require(:question).permit(:title, :content)
+    end
+
+    def owns_question
+      raise 'must be owner' unless user_signed_in? && @question.owner?(current_user)
     end
 end

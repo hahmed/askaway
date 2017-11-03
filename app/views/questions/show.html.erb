@@ -1,11 +1,12 @@
 <h2><%= @question.title %></h2>
-<div class="d-flex justify-content-start small mb-1">
+<div class="d-flex justify-content-start mb-3">
   <span class="mr-auto text-muted">
-    Asked on <span class="text-dark"><%= local_time(@question.created_at) %></span>
+    <span class="text-dark"><%= @question.user.name %></span> asked on
+    <span class="text-dark"><%= local_time(@question.created_at) %></span>
   </span>
-  <%= link_to 'Edit', edit_question_path(@question), class: '' %>
+  <%= link_to 'Edit', edit_question_path(@question), class: '' if user_signed_in? && @question.owner?(current_user) %>
 </div>
-<div>
+<div class="">
   <%= @question.content %>
 </div>
 <hr />
@@ -39,9 +40,17 @@
     <%= form.label :content, 'Your answer' %>
     <%= form.text_area :content, id: :answer_content, class: 'form-control' %>
   </div>
-  <% if user_signed_in? %>
+  <% if user_signed_in? && !@question.owner?(current_user) %>
     <div class="actions">
       <%= form.submit 'Submit', class: 'btn btn-outline-success' %>
+    </div>
+  <% elsif @question.owner?(current_user) %>
+    <div class="actions">
+      <button class="btn btn-outline-secondary disabled" type="button">Submit</button>
+    </div>
+    <div class="alert alert-warning my-3 text-center">
+      You are awesome, but you can't answer you own question
+      <%= Emoji.find_by_alias("raised_hands").raw %>
     </div>
   <% else %>
     <div class="actions">
