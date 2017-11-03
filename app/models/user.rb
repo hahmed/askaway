@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_many :questions
   has_many :answers
+  # active_storage backed avatar
+  has_one_attached :avatar
+
+  validates :name, presence: true
 end

@@ -1,5 +1,5 @@
 <h2 class="text-center">
   Edit question
-  <%= link_to 'back', @question, class: 'small' %>
 </h2>
+<p class="text-center"><%= link_to 'cancel changes', @question, class: 'small' %></p>
 <%= render 'form', question: @question %>

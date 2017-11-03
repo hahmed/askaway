@@ -1,7 +1,55 @@
-<h2>
-  <%= @question.title %>
-</h2>
+<h2><%= @question.title %></h2>
+<div class="d-flex justify-content-start small mb-1">
+  <span class="mr-auto text-muted">
+    Asked on <span class="text-dark"><%= local_time(@question.created_at) %></span>
+  </span>
+  <%= link_to 'Edit', edit_question_path(@question), class: '' %>
+</div>
 <div>
   <%= @question.content %>
 </div>
-<%= link_to 'Edit', edit_question_path(@question) %>
+<hr />
+<% if @answers.any? %>
+  <ul class="list-unstyled mb-4">
+    <% @answers.each do |answer| %>
+    <li class="media mb-2">
+      <%= image_tag(answer.user.avatar.variant(resize: "64x64"), class: 'mr-3') %>
+      <div class="media-body">
+        <div class="mb-1"><%= answer.content %></div>
+        <p class="mt-0 mb-1 small"><%= answer.user.name %> answered <%= local_time_ago(answer.created_at) %></p>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with(model: @answer, local: true, url: question_answers_path(question_id: @question.id)) do |form| %>
+  <% if @answer.errors.any? %>
+    <div class="alert alert-warning" id="error_explanation">
+      <h6 class="">
+        <%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:
+      </h6>
+      <ul>
+      <% @answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :content, 'Your answer' %>
+    <%= form.text_area :content, id: :answer_content, class: 'form-control' %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="actions">
+      <%= form.submit 'Submit', class: 'btn btn-outline-success' %>
+    </div>
+  <% else %>
+    <div class="actions">
+      <button class="btn btn-outline-secondary disabled" type="button">Submit</button>
+    </div>
+    <div class="alert alert-warning my-3 text-center">
+      Sign up to answer questions, help others and be awesome!
+      <%= Emoji.find_by_alias("raised_hands").raw %>
+    </div>
+  <% end %>
+<% end %>

@@ -20,3 +20,6 @@
 /public/packs
 /public/packs-test
 /node_modules
+
+# Files stored by active_storage in dev mode
+/storage

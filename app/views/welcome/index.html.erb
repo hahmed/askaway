@@ -1,6 +1,6 @@
 <h1 class="text-center mb-5">Ask away. Anything you like!</h1>
 <%= form_tag(questions_url, method: "get") do %>
-  <%= text_field_tag(:q, nil, class: 'form-control form-control-lg', placeholder: 'Search for...' ) %>
+  <%= text_field_tag(:q, nil, id: 'question-time', class: 'form-control form-control-lg', placeholder: 'Search for...' ) %>
 <% end %>
 <div class="mt-5">
   <p class="text-center">
