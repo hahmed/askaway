@@ -19,7 +19,13 @@
     <%= form.label :content %>
     <%= form.text_area :content, id: :question_content, class: 'form-control' %>
   </div>
-  <div class="actions">
-    <%= form.submit 'Submit', class: 'btn btn-outline-success' %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="actions">
+      <%= form.submit 'Submit', class: 'btn btn-outline-success' %>
+    </div>
+  <% else %>
+    <div class="actions">
+      <button class="btn btn-outline-secondary disabled">Submit</button>
+    </div>
+  <% end %>
 <% end %>

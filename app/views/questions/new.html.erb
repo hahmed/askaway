@@ -1,4 +1,10 @@
 <div class="">
-  <h2>New Question</h2>
+  <h5>Ask the community for advice, recommendations, best food...</h5>
   <%= render 'form', question: @question %>
+  <% unless user_signed_in? %>
+    <div class="alert alert-warning my-3 text-center">
+      Sign up to ask the community a question
+      <%= Emoji.find_by_alias("thinking").raw %>
+    </div>
+  <% end %>
 </div>
