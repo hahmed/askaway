@@ -44,6 +44,11 @@ gem 'jquery-ui-rails'
 gem 'searchkick'
 gem 'devise'
 gem 'acts-as-taggable-on'
+gem 'avatarly'
+
+# storage and image variants
+gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
+gem 'mini_magick'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
