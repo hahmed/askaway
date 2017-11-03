@@ -67,9 +67,15 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # GET /questions/autocomplete
   def autocomplete
     render json: Question.search(params[:term], fields: [{ title: :text_start }],
       limit: 10).map(&:title)
+  end
+
+  # GET /questions/autocomplete
+  def me
+    @questions = current_user.questions
   end
 
   private

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :answers, only: [:create, :destroy]
     collection do
       get :autocomplete
+      get :me
     end
   end
 
