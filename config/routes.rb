@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Split::Dashboard, at: 'split'
+  
   resources :questions do
     resources :answers, only: [:create, :destroy]
     collection do

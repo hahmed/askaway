@@ -4,7 +4,9 @@
 <% end %>
 <div class="mt-5">
   <p class="text-center">
-    <%= link_to 'New Question', new_question_path, class: 'btn btn-outline-primary' %>
+    <% ab_test(:new_question_link_class, "btn-primary", "btn-outline-primary") do |alternative| %>
+      <%= link_to 'New Question', new_question_path, class: "btn #{alternative}" %>
+    <% end %>
   </p>
   <% unless @questions.any? %>
     <p class="text-center display-1">🤷</p>

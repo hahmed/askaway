@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
+    ab_finished(:new_question_link_class)
     @question = Question.new
   end
 

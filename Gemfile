@@ -62,6 +62,9 @@ gem 'html-pipeline'
 gem 'commonmarker'
 gem 'sanitize'
 
+# A/B testing
+gem 'split', require: 'split/dashboard'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
