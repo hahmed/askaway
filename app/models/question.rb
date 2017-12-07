@@ -9,7 +9,14 @@ class Question < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  searchkick text_start: [:title], suggest: [:title]
+  searchkick word_start: [:title, :content], suggest: [:title], highlight: [:title]
+
+  def search_data
+    {
+      title: title,
+      content: content
+    }
+  end
 
   def owner?(current_user)
     current_user == self.user
