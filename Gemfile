@@ -65,8 +65,12 @@ gem 'sanitize'
 # A/B testing
 gem 'split', require: 'split/dashboard'
 
-# Error tracking 
+# Error tracking
 gem 'airbrake'
+
+# Authenticate via twitter
+gem 'omniauth-twitter'
+gem 'twitter'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
