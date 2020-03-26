@@ -1,13 +1,3 @@
-GIT
-  remote: https://github.com/rails/web-console.git
-  revision: be84e6471c33bbbea17f6dfc9e5ed3c7c7c4bb57
-  specs:
-    web-console (4.0.1)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -977,6 +967,8 @@ GEM
       aws-eventstream (~> 1.0, >= 1.0.2)
     bcrypt (3.1.13)
     bindex (0.8.1)
+    bootsnap (1.4.6)
+      msgpack (~> 1.0)
     bootstrap (4.0.0)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
@@ -984,13 +976,14 @@ GEM
     buftok (0.2.0)
     builder (3.2.4)
     byebug (11.1.1)
-    capybara (2.18.0)
+    capybara (3.31.0)
       addressable
       mini_mime (>= 0.1.3)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (>= 2.0, < 4.0)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (~> 1.5)
+      xpath (~> 3.2)
     childprocess (3.0.0)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -1079,6 +1072,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
+    msgpack (1.3.3)
     multi_json (1.14.1)
     multipart-post (2.1.1)
     mustermann (1.1.1)
@@ -1103,7 +1097,8 @@ GEM
     pg (0.21.0)
     popper_js (1.16.0)
     public_suffix (4.0.3)
-    puma (3.12.4)
+    puma (4.3.3)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
@@ -1144,6 +1139,7 @@ GEM
       ffi (~> 1.0)
     rbtree3 (0.6.0)
     redis (4.1.3)
+    regexp_parser (1.7.0)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -1226,6 +1222,15 @@ GEM
     unicode_utils (1.4.0)
     warden (1.2.8)
       rack (>= 2.0.6)
+    web-console (4.0.1)
+      actionview (>= 6.0.0)
+      activemodel (>= 6.0.0)
+      bindex (>= 0.4.0)
+      railties (>= 6.0.0)
+    webdrivers (4.2.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     webpacker (5.0.1)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
@@ -1246,9 +1251,10 @@ DEPENDENCIES
   airbrake
   avatarly
   aws-sdk (~> 3.0, >= 3.0.1)
+  bootsnap (>= 1.4.2)
   bootstrap (~> 4.0.0.beta)
   byebug
-  capybara (~> 2.13)
+  capybara (>= 2.15)
   coffee-rails (~> 4.2)
   commonmarker
   devise
@@ -1263,7 +1269,7 @@ DEPENDENCIES
   mini_magick
   omniauth-twitter
   pg (~> 0.18)
-  puma (~> 3.7)
+  puma (~> 4.0)
   rails (~> 6.0)
   rails-assets-tether (>= 1.3.3)!
   sanitize
@@ -1277,7 +1283,8 @@ DEPENDENCIES
   twitter
   tzinfo-data
   uglifier (>= 1.3.0)
-  web-console!
+  web-console (>= 3.3.0)
+  webdrivers
   webpacker
 
 BUNDLED WITH
