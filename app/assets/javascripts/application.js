@@ -19,5 +19,4 @@
 //= require tether
 //= require popper
 //= require bootstrap
-//= require welcome
 //= require questions
