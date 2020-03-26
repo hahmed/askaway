@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyText
-  references: 
+  content: One random answer
+  question: one
+  user: two
 
 two:
-  content: MyText
-  references: 
+  content: Another random answer
+  question: one
+  user: two

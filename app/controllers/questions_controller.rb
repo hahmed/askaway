@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
-  before_action :owns_question, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create, :me]
+  before_action :owns_question, only: [:edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -19,13 +19,11 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    ab_finished(:new_question_link_class)
     @question = Question.new
   end
 
   # GET /questions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /questions
   # POST /questions.json
