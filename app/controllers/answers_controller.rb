@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_action :set_question, :authenticate_user!
-  before_action :owns_question, only: [:edit, :update]
+  before_action :owns_question
 
   # POST /questions/1/answers
   # POST /questions/1/answers.json
@@ -41,6 +41,6 @@ class AnswersController < ApplicationController
     end
 
     def owns_question
-      raise 'cant be owner' unless @question.owner?(current_user)
+      raise 'cant be owner' if @question.owner?(current_user)
     end
 end
