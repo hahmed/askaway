@@ -18,16 +18,20 @@ class AnswersController < ApplicationController
         format.html { render 'questions/show' }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 
   # DELETE /questions/1/answers/1
   # DELETE /questions/1/answers/1.json
   def destroy
-    @question.answers.find(params[:answer_id]).destroy
+    answer = Answer.find_by(user_id: current_user.id, id: params[:id])
+    answer.destroy
+
     respond_to do |format|
       format.html { redirect_to question_url, notice: 'Answer was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

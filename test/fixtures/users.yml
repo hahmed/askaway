@@ -5,9 +5,13 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  email: hi@example.com
+  email: jim@example.com
   name: jim example
 
 two:
-  email: bye@example.com
-  name: tony example
+  email: sam@example.com
+  name: sam example
+
+three:
+  email: felix@example.com
+  name: felix example
