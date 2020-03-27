@@ -10,20 +10,18 @@
   <%= @question.content %>
 </div>
 <hr />
-<% if @answers.any? %>
-  <ul class="list-unstyled mb-4">
-    <% @answers.each do |answer| %>
-    <li class="media mb-2">
-      <%= user_avatar(current_user, klass: 'mr-3')%>
-      <div class="media-body">
-        <div class="mb-1"><%= answer.content %></div>
-        <p class="mt-0 mb-1 small"><%= answer.user.name %> answered <%= local_time_ago(answer.created_at) %></p>
-      </div>
-    </li>
-    <% end %>
-  </ul>
-<% end %>
-<%= form_with(model: @answer, local: true, url: question_answers_path(question_id: @question.id)) do |form| %>
+<ul class="list-unstyled mb-4" id="answers">
+  <% @answers.each do |answer| %>
+  <li class="media mb-2" data-id="<%= answer.id %>">
+    <%= user_avatar(current_user, klass: 'mr-3')%>
+    <div class="media-body">
+      <div class="mb-1"><%= answer.content %></div>
+      <p class="mt-0 mb-1 small"><%= answer.user.name %> answered <%= local_time_ago(answer.created_at) %></p>
+    </div>
+  </li>
+  <% end %>
+</ul>
+<%= form_with(model: @answer, url: question_answers_path(question_id: @question.id)) do |form| %>
   <% if @answer.errors.any? %>
     <div class="alert alert-warning" id="error_explanation">
       <h6 class="">
@@ -57,7 +55,7 @@
       <button class="btn btn-outline-secondary disabled" type="button">Submit</button>
     </div>
     <div class="alert alert-warning my-3 text-center">
-      Sign up to answer questions, help others and be awesome!
+      Sign up to answer questions, and be awesome!
       <%= Emoji.find_by_alias("raised_hands").raw %>
     </div>
   <% end %>
