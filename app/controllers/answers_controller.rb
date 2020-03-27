@@ -1,6 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_question,
-                :authenticate_user!
+  before_action :set_question, :authenticate_user!
   before_action :owns_question, only: [:edit, :update]
 
   # POST /questions/1/answers

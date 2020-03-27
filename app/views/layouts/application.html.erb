@@ -28,11 +28,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              <% if current_user.avatar %>
-                <%= image_tag(current_user.avatar.variant(resize: "28x28"), class: '') %>
-              <% else %>
-                <%= Emoji.find_by_alias("cat").raw %>
-              <% end %>
+              <%= user_avatar(current_user)%>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <h6 class="dropdown-header">Hi, <%= current_user.name %></h6>

@@ -8,4 +8,12 @@ module ApplicationHelper
       end
     end.html_safe if content.present?
   end
+
+  def user_avatar(user, klass: nil)
+    if user&.avatar&.attached?
+      image_tag current_user.avatar.variant(resize: "28x28"), class: klass
+    else
+      Emoji.find_by_alias("cat").raw
+    end
+  end
 end

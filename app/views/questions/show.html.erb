@@ -14,7 +14,7 @@
   <ul class="list-unstyled mb-4">
     <% @answers.each do |answer| %>
     <li class="media mb-2">
-      <%= image_tag(answer.user.avatar.variant(resize: "64x64"), class: 'mr-3') %>
+      <%= user_avatar(current_user, klass: 'mr-3')%>
       <div class="media-body">
         <div class="mb-1"><%= answer.content %></div>
         <p class="mt-0 mb-1 small"><%= answer.user.name %> answered <%= local_time_ago(answer.created_at) %></p>
