@@ -1,0 +1,7 @@
+<li class="media mb-2" data-id="<%= answer.id %>">
+  <%= user_avatar(current_user, klass: 'mr-3')%>
+  <div class="media-body">
+    <div class="mb-1"><%= answer.content %></div>
+    <p class="mt-0 mb-1 small"><%= answer.user.name %> answered <%= local_time_ago(answer.created_at) %></p>
+  </div>
+</li>

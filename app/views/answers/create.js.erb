@@ -1,1 +1,6 @@
-document.getElementById('answers').getElementsByClassName('className')
+var list = document.getElementById('answers');
+list.insertAdjacentHTML("beforeend", "<%= j render('questions/answer', answer: @answer) %>");
+var el = document.getElementById("answer_content")
+el.value = '';
+el.focus();
+window.scrollTo(0, document.body.scrollHeight);

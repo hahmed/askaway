@@ -12,13 +12,7 @@
 <hr />
 <ul class="list-unstyled mb-4" id="answers">
   <% @answers.each do |answer| %>
-  <li class="media mb-2" data-id="<%= answer.id %>">
-    <%= user_avatar(current_user, klass: 'mr-3')%>
-    <div class="media-body">
-      <div class="mb-1"><%= answer.content %></div>
-      <p class="mt-0 mb-1 small"><%= answer.user.name %> answered <%= local_time_ago(answer.created_at) %></p>
-    </div>
-  </li>
+    <%= render 'answer', answer: answer %>
   <% end %>
 </ul>
 <%= form_with(model: @answer, url: question_answers_path(question_id: @question.id)) do |form| %>
@@ -36,7 +30,7 @@
   <% end %>
   <div class="form-group">
     <%= form.label :content, 'Your answer' %>
-    <%= form.text_area :content, id: :answer_content, class: 'form-control' %>
+    <%= form.text_field :content, id: :answer_content, class: 'form-control' %>
   </div>
   <% if user_signed_in? && !@question.owner?(current_user) %>
     <div class="actions">
